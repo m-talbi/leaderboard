@@ -28,7 +28,17 @@ h2 {
 .form__group {
   position: relative;
   padding: 1.5rem 0;
-  width: min(100%, 450px);
+  width: 450px;
+  min-width: 100%;
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #9b9b9b;
 }
 
 .form__field {
@@ -51,15 +61,11 @@ h2 {
     cursor: text;
     top: 20px;
   }
-}
 
-.form__label {
-  position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 1rem;
-  color: #9b9b9b;
+  &:required,
+  &:invalid {
+    box-shadow: none;
+  }
 }
 
 .form__field:focus {
@@ -69,18 +75,12 @@ h2 {
     transition: 0.2s;
     font-size: 1rem;
     color: #2a2a2a;
-    font-weight:700;
+    font-weight: 700;
   }
+
   padding-bottom: 6px;
   border-width: 3px;
   border-color: #2a2a2a;
-}
-
-.form__field{
-  &:required,
-  &:invalid {
-    box-shadow:none;
-  }
 }
 
 .btn-contained {
@@ -104,7 +104,7 @@ h2 {
 
 .btn-contained:hover,
 .btn-contained:focus {
-  opacity: .9;
+  opacity: 0.9;
 }
 
 main {
