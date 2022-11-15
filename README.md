@@ -1,4 +1,4 @@
-# To Do List Project
+# Leaderboard Project
 
 The leaderboard project is a small application that displays scores submitted by different players. It also allows you to submit your score thanks to the external Leaderboard API service.
 
