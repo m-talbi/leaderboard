@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: ['./src/css/styles.scss', './src/js/app.js'],
+  entry: ['./src/css/style.scss', './src/scripts/index.js'],
   module: {
     rules: [
       {
@@ -18,7 +18,7 @@ module.exports = {
       },
       {
         test: /\.js$/i,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -32,11 +32,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      title: 'To Do List',
+      title: 'Leaderboard',
       template: resolve(__dirname, 'src', 'index.html'),
     }),
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-    }),
+    new MiniCssExtractPlugin(),
   ],
 };
