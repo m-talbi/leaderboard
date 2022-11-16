@@ -38,4 +38,4 @@ Give a ⭐️ if you like this project!
 
 ## License
 
-This project is available as open source under the terms of [MIT license](https://choosealicense.com/licenses/mit/).
+This project is available as open source under the terms of [MIT license](https://github.com/Kweeka1/leaderboard/blob/dev/MIT.md).
