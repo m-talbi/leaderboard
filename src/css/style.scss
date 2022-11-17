@@ -2,6 +2,7 @@
 @import './input.scss';
 @import './button.scss';
 @import './spinner.scss';
+@import './snackbar.scss';
 
 main {
   display: flex;
@@ -32,6 +33,12 @@ main {
         background-color: #e77f4c;
       }
     }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  main {
+    padding: 1rem 2rem;
   }
 }
 

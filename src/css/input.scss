@@ -1,8 +1,8 @@
 .form__group {
   position: relative;
   padding: 1.5rem 0;
-  width: 450px;
-  min-width: 100%;
+  /* stylelint-disable-next-line */
+  width: min(400px, 100%);
 }
 
 .form__label {

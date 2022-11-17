@@ -1,16 +1,15 @@
-export const showSpinner = (scoreContainer) => {
+const showSpinner = async (scoreContainer, callbackAsync) => {
   scoreContainer.innerHTML = '';
   const spinnerEl = `
   <tr id="table-spinner" class="spinner">
     <td>
-    <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     </td>
   </tr>
   `;
   scoreContainer.insertAdjacentHTML('beforeend', spinnerEl);
+
+  await callbackAsync();
 };
 
-export const hideSpinner = (scoreContainer) => {
-  const spinnerEl = scoreContainer.querySelector('#table-spinner');
-  spinnerEl.remove();
-};
+export default showSpinner;

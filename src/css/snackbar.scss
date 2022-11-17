@@ -1,0 +1,59 @@
+.app_snackbar {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 30px;
+  padding: 0.7rem;
+  padding-left: 1rem;
+  right: 1rem;
+  gap: 1rem;
+  background-color: rgb(30%, 30%, 30%);
+  border-radius: 3px;
+  animation: moveDown 0.4s ease-in-out;
+
+  & .snackbar_message {
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  & .snackbar_dismiss {
+    color: rgb(35, 175, 35);
+    padding: 0.3rem 0.5rem;
+    cursor: pointer;
+    transition: all 0.15s ease-in;
+    border-radius: 3px;
+
+    &:hover {
+      background-color: rgb(36%, 36%, 36%);
+    }
+  }
+}
+
+.hide_snackbar {
+  animation: moveUp 0.4s ease-in-out;
+}
+
+@keyframes moveDown {
+  0% {
+    top: -60px;
+  }
+
+  100% {
+    top: 30px;
+  }
+}
+
+@keyframes moveUp {
+  0% {
+    top: 30px;
+    opacity: 1;
+  }
+
+  100% {
+    top: -60px;
+    opacity: 0;
+  }
+}

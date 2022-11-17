@@ -18,7 +18,7 @@ export const createNewGameAsync = async () => {
     localStorage.setItem('leaderboardId', JSON.stringify(gameId));
 
     return {
-      status: response.status,
+      result: 'Football scores Leaderboard is created successfully',
     };
   } catch (error) {
     return {
@@ -39,9 +39,7 @@ export const addScoreAsync = async (score) => {
       },
     });
 
-    return {
-      status: response.status,
-    };
+    return response.json();
   } catch (error) {
     return {
       error: error.message,

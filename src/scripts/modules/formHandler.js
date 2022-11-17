@@ -1,17 +1,16 @@
 import { refreshList } from './formHelpers.js';
 import { addScoreAsync, createNewGameAsync, getScoresAsync } from './leaderboardService.js';
-import { hideSpinner, showSpinner } from './spinner.js';
+import showSpinner from './spinner.js';
+import showSnackbar from './snackbar.js';
 
-const initializeScoreApp = async (form, refreshListBtn, scoreContainer) => {
-  showSpinner(scoreContainer);
+const initializeScoreApp = (form, refreshListBtn, scoreContainer) => {
+  showSpinner(scoreContainer, async () => {
+    const game = await createNewGameAsync();
+    showSnackbar(game);
+    refreshList(scoreContainer, []);
+  });
 
-  await createNewGameAsync();
-  const scores = await getScoresAsync();
-
-  hideSpinner(scoreContainer);
-  refreshList(scoreContainer, scores.result);
-
-  form.addEventListener('submit', async (ev) => {
+  form.addEventListener('submit', (ev) => {
     ev.preventDefault();
 
     const scoreObj = {
@@ -21,19 +20,19 @@ const initializeScoreApp = async (form, refreshListBtn, scoreContainer) => {
 
     form.reset();
 
-    showSpinner(scoreContainer);
-    await addScoreAsync(scoreObj);
-    const scores = await getScoresAsync();
-
-    hideSpinner(scoreContainer);
-    refreshList(scoreContainer, scores.result);
+    showSpinner(scoreContainer, async () => {
+      const response = await addScoreAsync(scoreObj);
+      showSnackbar(response);
+      const scores = await getScoresAsync();
+      refreshList(scoreContainer, scores.result);
+    });
   });
 
-  refreshListBtn.addEventListener('click', async () => {
-    showSpinner(scoreContainer);
-    const scores = await getScoresAsync();
-    hideSpinner(scoreContainer);
-    refreshList(scoreContainer, scores.result);
+  refreshListBtn.addEventListener('click', () => {
+    showSpinner(scoreContainer, async () => {
+      const scores = await getScoresAsync();
+      refreshList(scoreContainer, scores.result);
+    });
   });
 };
 
