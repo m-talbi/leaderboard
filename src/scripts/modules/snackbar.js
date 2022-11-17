@@ -20,10 +20,7 @@ const showSnackbar = (res) => {
   const currentSnackbar = document.querySelector('.app_snackbar');
   if (currentSnackbar) hideSnackbarFast(currentSnackbar);
 
-  let text;
-
-  if (res.error) text = res.error;
-  else text = res.result;
+  const text = res.error ? res.error : res.result;
 
   const snackbar = `
     <div class="app_snackbar">
