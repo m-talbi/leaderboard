@@ -51,7 +51,7 @@ export const getScoresAsync = async () => {
   try {
     const gameId = JSON.parse(localStorage.getItem('leaderboardId'));
     const respone = await fetch(`${LEADERBOARD_API}/games/${gameId}/scores`);
-    return await respone.json();
+    return respone.json();
   } catch (error) {
     return {
       error: error.message,
